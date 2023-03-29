@@ -7,7 +7,6 @@
 	//지역변수는 지역을 떠나면 사라진다.
 	//closer를 이용하면 규칙위반 가능
 	//지역변수를 포함한 함수를 리턴하면 계속 유효
-	//
 	function closerTest(b) {
 		var a = 100;
 		return function() {
@@ -24,8 +23,41 @@
 	}
 	//정의는 내가하고 호출은 받은 쪽에서 한다. (callback)
 	window.onload = function() {
+		btn11.onclick = function() {
+			var score = [ 100, 99, 50, 88 ];
+			score.forEach(function(elt, index, arr) {
+				here.innerHTML += "<br>" + index + "번째" + elt;
+			}); // 람다식 표현 : ()=>{}
+		}
+		function call() {
+			for (var i = 0; i < 3; i++) {
+				setTimeout(function() {
+					alert(i);
+				}, 0);
+			}
+		}
+		function call2() {
+			for (var i = 0; i < 3; i++) {
+				(function(aa) {
+					setTimeout(function() {
+						alert(aa);
+					}, 0);
+				})(i);
+			}
+		}
+		function call3() {
+			//let는 {}내에서만 변수가 유효, 각자의 i가 생김, 클로저 지원
+			for (let i = 0; i < 3; i++) {
+				setTimeout(function() {
+					alert(i);
+				}, 0);
+			}
+		}
 		var f1 = add(0);
 		var f2 = add(100);
+		btn10.onclick = call3;
+		btn9.onclick = call2;
+		btn8.onclick = call;
 		btn7.onclick = function() {
 			here.innerHTML = f2 + "---" + f2();
 		}
@@ -59,6 +91,7 @@
 	function call(f) {
 		//함수를 추가하면 다 window 안으로 들어간다
 		//받은 쪽에서 함수를 부른다. (정의는 위에서!)
+		f();
 	}
 </script>
 </head>
@@ -71,6 +104,10 @@
 	<button id="btn5">클로저</button>
 	<button id="btn6">클로저(1부터 증가)</button>
 	<button id="btn7">클로저(100부터 증가)</button>
+	<button id="btn8">클로저(var)</button>
+	<button id="btn9">클로저(지역변수사용)</button>
+	<button id="btn10">클로저(let)</button>
+	<button id="btn11">클로저(자동)</button>
 	<hr>
 	<div id="here">여기</div>
 </body>
