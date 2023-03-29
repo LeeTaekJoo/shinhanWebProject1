@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="external.js"></script>
+
+
+<script>
+	// 같은 이름의 함수가 있는 경우 나중것이 유효하다.
+	function call() {
+		alert("internal JavaScript");
+	}
+	
+	function call2(){
+		document.querySelector("#here").innerHTML = 30>20>10;
+		document.querySelector("#here").innerHTML +="<br>"+ (30>20);
+		document.querySelector("#here").innerHTML +="<br>"+ (30>20 && 20>10);
+		
+		document.getElementById("here").innerHTML +="<br>!!!!!";
+	}
+	
+	function call3(){		
+		// not defined은 오류, undefined는 오류가 아님
+		// 호이스팅 var a; 먼저수행한다. 변수가 지역선언되고 초기값은 undefined
+		var a;
+		document.getElementById("here").innerHTML +="<br>"+a+":" + typeof(a);
+		
+		var a=100;
+		document.getElementById("here").innerHTML +="<br>"+a+":" + typeof(a);
+	}
+	
+	function call4(){
+		age = prompt("나이를 입력하세요.",20);
+		document.getElementById("here").innerHTML ="당신의 나이는 " + (age-2);
+	}
+	
+	function call5(){
+		var result = confirm("계속?");	
+		document.getElementById("here").innerHTML = result?"OK":"아숩다";
+	}
+	
+	function call6(){
+		var age = "20살";	
+		// NaN : Not a number, 숫자형문자가 아니다. 숫자가 아닌 문자가 있다.
+		// document.getElementById("here").innerHTML = Number(age) + 10;
+		// parseInt : 뒤에있는 문자무시, 숫자형문자만 숫자로 변경
+		document.getElementById("here").innerHTML = parseInt(age) + 10;
+	}
+	
+	function call7(){
+		document.getElementById("here").innerHTML =
+			Boolean(0)+":" + Boolean(' ')+":" + Boolean(null)+":" +
+			Boolean(undefined)+":" + Boolean(NaN);
+		var result;
+		if(result){
+			document.getElementById("here").innerHTML += "OK";
+		}else{
+			document.getElementById("here").innerHTML += "NOT";
+		}
+	}
+	
+	function call8(){
+		var a=100;
+		var b ="100";
+		// ==는 값이 같은가?
+		// ===는 값과 타입이 같은가? 
+		document.getElementById("here").innerHTML = a === b;
+	}
+	
+	//사용자에게 숫자를 입력 받아 양수, 0, 음수를 구분하는 프로그램
+	function call9(){
+		num = prompt("숫자를 입력하세요");
+		if(num>0){
+			document.getElementById("here").innerHTML = "양수";
+		}else if(num==0){
+			document.getElementById("here").innerHTML = "0";
+		}else{
+			document.getElementById("here").innerHTML = "음수";
+		}
+	}
+	// 사용자에게 숫자를 입력 받아 홀수와 짝수를 구분하는 프로그램
+	function call10(){
+		num = prompt("숫자를 입력하세요");
+		if(num%2==0){
+			document.getElementById("here").innerHTML = "짝수";
+		}else{
+			document.getElementById("here").innerHTML = "홀수";
+		}
+	}
+	
+	// 사용자에게 국어 영어, 수학 점수를 입력 받아 평균을 구한 뒤 수우미양가를 구분하는 프로그램
+	function call11(){
+		var num1 = Number(prompt("국어점수입력"));
+		var num2 = Number(prompt("영어점수입력"));
+		var num3 = Number(prompt("수학점수입력"));
+		var avg = (num1+num2+num3)/3;
+		
+		if(avg>90){
+			document.getElementById("here").innerHTML = "수";
+		}else if(avg>80){
+			document.getElementById("here").innerHTML = "우";
+		}else if(avg>70){
+			document.getElementById("here").innerHTML = "미";
+		}else if(avg>60){
+			document.getElementById("here").innerHTML = "양";
+		}else{
+			document.getElementById("here").innerHTML = "가";
+		}
+		
+	}
+	
+</script>
+</head>
+<body>
+	<h1>JavaScript문법</h1>
+	<button onclick="call()">외부js연결</button>
+	<button onclick="call2()">비교연산자, 논리연산자</button>
+	<button onclick="call3()">undefined</button>
+	<button onclick="call4()">prompt</button>
+	<button onclick="call5()">confirm</button>
+	<button onclick="call6()">Number</button>
+	<button onclick="call7()">Boolean</button>
+	<button onclick="call8()">===</button>
+	<button onclick="call9()">LAB1</button>
+	<button onclick="call10()">LAB2</button>
+	<button onclick="call11()">LAB3</button>
+	
+	<hr>
+	<div id="here">여기</div>
+</body>
+</html>

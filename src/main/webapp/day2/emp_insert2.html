@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>직원등록2</title>
+<style>
+  li{
+     list-style: none;
+  }
+  label{
+     width: 200px;
+     display: inline-block;
+  }
+</style>
+</head>
+<body>
+	<h1>직원정보 입력</h1>
+	<form action="empInsert.jsp">
+		<ul>
+			<li><label>EMPLOYEE_ID</label>
+			<input type="number" name="employee_id" autofocus="autofocus" required="required"></li>
+			<li><label>FIRST_NAME</label><input type="text" name="first_name"></li>
+			<li><label>LAST_NAME</label><input type="text" name="last_name" required="required"></li>
+			<li><label>EMAIL</label><input type="email" name="email" required="required"></li>
+			<li><label>PHONE_NUMBER</label>
+			<input type="tel"
+				pattern="010-[0-9]{4}-[0-9]{4}" placeholder="010-1234-1234" name="phone_number"></li>
+			<li><label>HIRE_DATE</label><input type="date" name="hire_date" required="required"></li>
+			<li><label>JOB_ID</label><input type="text" name="job_id" required="required"></li>
+			<li><label>SALARY</label><input type="number" name="salary"></li>
+			<li><label>COMMISSION_PCT</label><input type="number" name="commission_pct"></li>
+			<li><label>MANAGER_ID</label><input type="number" name = "manager_id"></li>
+			<li><label>DEPARTMENT_ID</label><input type="number" name="department_id"></li>
+		</ul>
+		<input type="submit" value="등록">
+	</form>
+</body>
+</html>
