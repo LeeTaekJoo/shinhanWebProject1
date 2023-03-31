@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+	function check(selectNo){
+		var imageName = "";
+		if(selectNo==1){
+			imageName = "images/img1.jpg";
+		}else if(selectNo==2){
+			imageName = "images/img2.jpg";
+		}
+		// document.getElementById("inputImage");
+		var obj = document.querySelector("#inputImage");
+		// obj.innnerHTML = `<img src=${imageName}>`;
+		// obj.innnerHTML = "<img src='" + imageName + "'>";
+		
+		var element = document.createElement("img");
+		element.src = imageName;
+		obj.appendChild(element);
+	}
+	
+
+</script>
+
+</head>
+<body>
+	<div id="inputImage">
+		
+
+	</div>
+	<form>
+		<input type="button" value="내사진1" onclick="check(1)" /> <input
+			type="button" value="내사진2" onclick="check(2)" />
+	</form>
+
+</body>
+</html>
